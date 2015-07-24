@@ -272,3 +272,10 @@
         
         ## We must extract this file
         write.table(motionDataMeanSummary, "step5Output.txt",row.names=FALSE)
+        
+        ###
+        ### This concludes Requirement 5.
+        ### tidy data has been produced and placed into a text file that was
+        ### also uploaded to the Coursera Course Project site.
+        ###
+        
