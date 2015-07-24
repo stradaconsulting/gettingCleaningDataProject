@@ -198,5 +198,7 @@ A copy of the tidy data set extracted from the run_analysis.R program following 
 
 ## References
 [1] Course Project Information: <https://class.coursera.org/getdata-030/human_grading>
+
 [2] Study information: <http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones#>
+
 [3] Data Source: <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
