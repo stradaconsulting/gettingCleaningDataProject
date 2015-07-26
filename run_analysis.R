@@ -12,6 +12,8 @@
 ##    - exclude all 'angle' readings from final output of measurements 
 ##      because some of these have the term 'Mean' but not as a function
 ##      'mean()' as we are expected to keep
+## v3 - added comments to clarify that no duplicate column names occurred 
+##      even though data for features.txt has duplicates
 
 ## INSTRUCTIONS
 ## You will be required to submit: 
@@ -116,7 +118,14 @@
                 ##features
                 ##Give column names of featureID and featureDesc
                 features <- read.table("./UCI HAR Dataset/features.txt",sep="",col.names=c("featureID","featureDesc"))
-                        
+                ##NB##
+                # There is an issue here we will take care of later.  There are
+                # DUPLICATE column names in the data source for the "features" list
+                # This can be proven here where we get TRUE to test for duplicated
+                # values.  This will be addressed below.
+                any(duplicated(features$featureDesc))
+        
+        
                 ##activities
                 ##Give column names of activityID and activityDesc
                 activities <- read.table("./UCI HAR Dataset/activity_labels.txt",sep="",col.names=c("activityID","activityDesc"))
@@ -131,9 +140,17 @@
                 ## get reading data
                 ## the column names come from features$featureDesc so we assign
                 ## to col.names
-                ## We have taken care of Requirement 4 by including the variable
-                ## names from the features$featuresDesc we previously loaded
+                ## NB ## 
+                ## We have addressed the duplicate features$featuresDesc we previously 
+                ## identified. By forcing this into the column names it appears to have
+                ## automatically placed suffixes to differentiate between the duplicated
+                ## names.  In any case, the duplicated names are NOT any that we will need
+                ## later.
                 testReadings <- read.table("./UCI HAR Dataset/test/X_test.txt", sep = "",col.names=features$featureDesc)
+                
+                ## Run this to confirm we no longer have duplicated column names/featureDesc
+                any(duplicated(colnames(testReadings)))
+        
         
                 ##Check that all three have the same row count.  IF they don't 
                 ##then something went wrong.
@@ -163,11 +180,17 @@
                 ## get reading data
                 ## the column names come from features$featureDesc so we assign
                 ## to col.names
-                ## We have taken care of Requirement 4 by including the variable
-                ## names from the features$featuresDesc we previously loaded
+                ## NB ## 
+                ## We have addressed the duplicate features$featuresDesc we previously 
+                ## identified. By forcing this into the column names it appears to have
+                ## automatically placed suffixes to differentiate between the duplicated
+                ## names.  In any case, the duplicated names are NOT any that we will need
+                ## later.
                 trainReadings <- read.table("./UCI HAR Dataset/train/X_train.txt", sep = "",col.names=features$featureDesc)
         
-                        
+                ## Run this to confirm we no longer have duplicated column names/featureDesc
+                any(duplicated(colnames(testReadings)))
+                
                 ##Check that all three have the same row count.  If they don't
                 ##then something went wrong.
                 dim(trainSubject)
